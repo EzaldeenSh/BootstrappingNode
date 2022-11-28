@@ -2,6 +2,7 @@ package server;
 
 
 import communication.Message;
+import communication.MessageBroadcaster;
 import nodes.NodesContainer;
 import data.User;
 import data.UserGenerator;
@@ -13,7 +14,7 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
+
 
 public class ClientHandler implements Runnable{
     private final ObjectOutputStream toClient;
@@ -81,7 +82,8 @@ public class ClientHandler implements Runnable{
                      params[1] = "users";
                      params[2] = jsonObject.toJSONString();;
                      message.setParams(params);
-
+                     MessageBroadcaster messageBroadcaster = new MessageBroadcaster();
+                     messageBroadcaster.broadcastToAll(message);
 
 
                      /*broadcast message to all 4 nodes*/
