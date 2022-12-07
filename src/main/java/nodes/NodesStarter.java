@@ -1,28 +1,22 @@
 package nodes;
 
-import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.Map;
 
 public class NodesStarter {
     public void startAllNodes() throws IOException {
 
-        ProcessBuilder builder = new ProcessBuilder("cmd.exe" , "/c" , "cd \"C:\\Users\\User\\Desktop\\Newfolder \" &  bash nodesScript.sh ");
-        builder.redirectErrorStream(true);
-        Process process = builder.start();
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-        String line="";
-        while (line != null){
-            line = bufferedReader.readLine();
-            System.out.println(line);
-        }
+        ProcessBuilder builder1 = new ProcessBuilder("cmd.exe" , "/c" , "cd C:\\Users\\User\\Desktop\\Newfolder & start \"Node1\" java -jar Node1.jar");
+        builder1.redirectErrorStream(true);
+        builder1.start();
+        ProcessBuilder builder2 = new ProcessBuilder("cmd.exe" , "/c" , "cd C:\\Users\\User\\Desktop\\Newfolder & start \"Node2\" java -jar Node2.jar");
+        builder2.redirectErrorStream(true);
+        builder2.start();
+        ProcessBuilder builder3 = new ProcessBuilder("cmd.exe" , "/c" , "cd C:\\Users\\User\\Desktop\\Newfolder & start \"Node3\" java -jar Node3.jar");
+        builder3.redirectErrorStream(true);
+        builder3.start();
+        ProcessBuilder builder4 = new ProcessBuilder("cmd.exe" , "/c" , "cd C:\\Users\\User\\Desktop\\Newfolder & start \"Node4\" java -jar Node4.jar");
+        builder4.redirectErrorStream(true);
+        builder4.start();
 
-
-
-
-
-        /*run a script to run all nodes*/
     }
 }

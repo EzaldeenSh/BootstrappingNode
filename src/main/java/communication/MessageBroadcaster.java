@@ -21,7 +21,6 @@ public class MessageBroadcaster {
         }
     }
     private void broadcastMessage(int portNumber,Message message) throws IOException {
-        System.out.println("Attempting connection on port number: " + portNumber);
         Socket socket = new Socket("localhost", portNumber);
         ObjectOutputStream toServer = new ObjectOutputStream(socket.getOutputStream());
         toServer.writeObject("Node");
@@ -31,7 +30,6 @@ public class MessageBroadcaster {
             throw new RuntimeException(e);
         }
         toServer.writeObject(message);
-        System.out.println("Message sent!");
         socket.close();
     }
 }
